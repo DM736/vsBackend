@@ -3,6 +3,7 @@ import bcryptjs from "bcryptjs";
 import {validationResult} from "express-validator";
 import jwt from "jsonwebtoken";
 
+//Autenticacion del usuario 
 export const  authenUsuario = async (req, res) =>{
 
     const errores = validationResult(req);

@@ -15,6 +15,6 @@ authent.post("/",
     ],
     authenUsuario
 );
-
+//"validacion del token ruta: api/auth/val/"
 authent.post('/val/', authenti);
 export default authent

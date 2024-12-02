@@ -1,6 +1,7 @@
 import  {datab} from '../configDB/db.js';
 import { DataTypes } from "sequelize";
 
+//modelo de la transaccion
 export const Transacc = datab.define("transaccions",{
     nombre:{
         type: DataTypes.STRING,

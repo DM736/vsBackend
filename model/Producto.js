@@ -1,6 +1,7 @@
 import  {datab} from '../configDB/db.js';
 import { DataTypes } from "sequelize";
 
+//modelo del producto de la tienda
 const Producto = datab.define("producto",{
     imgData:{
         type: DataTypes.STRING,

@@ -1,5 +1,7 @@
 import jwt from "jsonwebtoken";
 import {Usuario} from "../model/Usuario.js";
+
+//Validacion del token y respuesta de los datos de usuario
 export const authenti = async(req, res)=>{
     const {token}= req.body
     try {

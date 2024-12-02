@@ -3,6 +3,7 @@ import bcryptjs from "bcryptjs";
 import {validationResult} from "express-validator";
 import jwt from "jsonwebtoken";
 
+//creacion de usuario y creacion de token
 export const CreateUser = async(req, res)=>{
     const errores = validationResult(req);
     if(!errores.isEmpty()){

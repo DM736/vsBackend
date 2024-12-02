@@ -4,6 +4,7 @@ import {Cesta} from "../model/Cesta.js"
 import {Historial} from "../model/Historial.js"
 import {Transacc} from "../model/Transacc.js"
 
+//validacion de cuenta y destino, creacion del historial de compras y transaccion
 export const CreatePago = async(req, res)=>{
     const {nombre, apellido,cedula, balance, clave, fechaExp,direcc, cesta, valorTotal} = req.body
     try {
@@ -60,6 +61,7 @@ export const CreatePago = async(req, res)=>{
         res.json({message: `Hubo un error al procesar la transaccion ${error}`})
     }
 }
+//validacion de los datos del usuario y cuenta bancaria
 export const validarInfo = async(req, res)=>{
     const {nombre, cedula, balance, clave, email, fechaExp, valorTotal} = req.body
     const cuentauser = await Cuenta.findOne({where:{nombre: nombre}})

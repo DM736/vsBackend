@@ -1,6 +1,7 @@
 import  {datab} from '../configDB/db.js';
 import { DataTypes } from "sequelize";
 
+//modelo Historial de compres
 export const Historial = datab.define("historials",{
     user:{
         type: DataTypes.NUMBER,

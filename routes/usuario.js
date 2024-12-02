@@ -4,6 +4,7 @@ import {check} from "express-validator";
 import { CreateUser } from "../controller/userController.js";
 
 const usuari = Router()
+//rutas del controlador para el registro de usuario
 usuari.post("/", 
     [
         check("nombre", "el nombre es obligatorio").not().isEmpty(),

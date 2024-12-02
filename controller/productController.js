@@ -2,6 +2,7 @@ import Producto from "../model/Producto.js";
 import bcrypt from "bcryptjs"
 import { validationResult } from "express-validator";
 
+//Agregar producto
 export const addProduct = async(req, res)=>{
     const erro = validationResult(req);
     if(!erro.isEmpty()) return res.status(400).json({errores: erro.array()})
@@ -10,8 +11,6 @@ export const addProduct = async(req, res)=>{
         let produc = await Producto.findOne({nombreProducto});
         if(!produc) return res.status(400).json({msg: "El producto ya existe"})
         produc = new Producto(req.body)
-        produc.id = await bcrypt.hash(id, 10)
-        produc.imgData = req.file.buffer
         await produc.save()
     } catch (error) {
         console.log("Hubo un error")
@@ -19,6 +18,7 @@ export const addProduct = async(req, res)=>{
         res.satus(500).send("Hubo un error")
     }
 }
+//Obtener un producto por un id
 export const gotExactProd = async(req, res)=>{
     try {
         const item = await Producto.findAll({where:{id: req.params.id}});
@@ -28,6 +28,7 @@ export const gotExactProd = async(req, res)=>{
         res.status(500).send("Error al consultar el producto")
     }
 }
+//Obtener todos los registros
 export const gotAll = async(req, res)=>{
     try {
         const item = await Producto.findAll()

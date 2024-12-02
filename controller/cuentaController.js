@@ -9,6 +9,7 @@ export const addCuenta = async(req, res) =>{
         res.status(500).send("Error al agregar el producto");
     }
 }
+// funcion para obtener una cuenta
 export const gotCuenta = async(req, res)=>{
     try {
         const accn = await Cuenta.findAll({
@@ -20,6 +21,7 @@ export const gotCuenta = async(req, res)=>{
         res.status(500).send("Error al consultar la cuenta")
     }
 }
+// funcion para actualizar una cuenta
 export const upCuenta = async(req, res)=>{
     try {
        await Cuenta.update(req.body,{

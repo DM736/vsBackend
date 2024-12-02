@@ -1,5 +1,5 @@
 import { Cesta } from "../model/Cesta.js";
-
+//funcion para agregar una cuenta
 export const addCesta = async(req, res) =>{
     try {
         await Cesta.create(req.body);
@@ -9,6 +9,7 @@ export const addCesta = async(req, res) =>{
         res.status(500).send("Error al agregar el producto");
     }
 }
+//funcion para obtener un producto especifico por usuario y id
 export const showCestaUser = async(req, res)=>{
     try{
         const item = await Cesta.findOne({
@@ -24,6 +25,7 @@ export const showCestaUser = async(req, res)=>{
         res.status(502).send("Error al mostar el producto")
     }
 }
+//funcion para obtener varios producto especifico por por el usuario
 export const showCesta2 = async(req, res)=>{
     try{
         const item = await Cesta.findAll({
@@ -38,6 +40,7 @@ export const showCesta2 = async(req, res)=>{
         res.status(502).send("Error al mostar los productos")
     }
 }
+//funcion para obtener todos los registros
 export const showCesta3 = async(req, res)=>{
     try{
         const item = await Cesta.findAll();
@@ -47,7 +50,7 @@ export const showCesta3 = async(req, res)=>{
         res.status(502).send("Error al mostar los productos")
     }
 }
-
+//funcion para eliminar un producto de la cesta por id
 export const delCesta = async(req,res)=>{
     try {
         await Cesta.destroy({
@@ -58,7 +61,7 @@ export const delCesta = async(req,res)=>{
         res.status(500).send("Error al eliminar el producto")
     }
 }
-
+//funcion para actualizar 
 export const upCesta = async(req, res)=>{
     try {
        await Cesta.update(req.body,{

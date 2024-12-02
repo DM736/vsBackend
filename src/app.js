@@ -12,6 +12,7 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
+//rutas para la transferencia de datos
 app.use('/uploads', express.static('uploads'));
 app.use('/api/auth', authent);
 app.use('/api/usuario', usuari);

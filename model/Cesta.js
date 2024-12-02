@@ -1,6 +1,7 @@
 import  {datab} from '../configDB/db.js';
 import { DataTypes } from "sequelize";
 
+// modelo Cesta de compras
 export const Cesta = datab.define("cesta",{
     user:{
         type: DataTypes.NUMBER,

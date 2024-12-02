@@ -2,7 +2,7 @@ import { addCesta, showCestaUser, showCesta2, showCesta3, delCesta, upCesta} fro
 import { Router } from "express";
 
 const rutac = Router();
-
+//rutas del controlador de la cesta de compras
 rutac.post("/", addCesta);
 rutac.get("/2/:user/:productoid", showCestaUser);
 rutac.get("/1/:user", showCesta2);
