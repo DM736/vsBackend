@@ -33,7 +33,7 @@ export const showCesta2 = async(req, res)=>{
                 user: req.params.user
             }
         });
-        if(item.length=="") return res.json({msg:"no hay registros todavia"})
+        if(item[0].length=="") return res.json({msg:"no hay registros todavia"})
         res.json(item);
     }catch(error){
         console.log(error)

@@ -4,18 +4,16 @@ import { validationResult } from "express-validator";
 
 //Agregar producto
 export const addProduct = async(req, res)=>{
-    const erro = validationResult(req);
-    if(!erro.isEmpty()) return res.status(400).json({errores: erro.array()})
-    const {id, imgData, nombreProducto}= req.file;
     try {
-        let produc = await Producto.findOne({nombreProducto});
-        if(!produc) return res.status(400).json({msg: "El producto ya existe"})
+        const {nombreProducto}=req.body
+        let produc = await Producto.findOne({where:{nombreProducto: nombreProducto}});
+        if(produc) return res.status(400).json({msg: "El producto ya existe"})
         produc = new Producto(req.body)
         await produc.save()
+        res.json({msg:"Producto agregado"})
     } catch (error) {
-        console.log("Hubo un error")
         console.log(error)
-        res.satus(500).send("Hubo un error")
+        res.status(500).send({msg:"Hubo un error"})
     }
 }
 //Obtener un producto por un id
@@ -37,3 +35,14 @@ export const gotAll = async(req, res)=>{
         res.status(500).send("Error al consultar el producto")
     }
 }
+export const getByWord = async(req, res)=>{
+        const quer = req.params.query;
+        const item = await Producto.findAll()
+        if(!req){
+            return res.json(item);
+        }else{
+            const filterByQuer = item.filter(items =>
+                items.nombreProducto.toLowerCase().includes(quer.toLowerCase()));
+            return res.json(filterByQuer)
+        }
+    }

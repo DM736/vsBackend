@@ -1,4 +1,4 @@
-import {addProduct, gotAll, gotExactProd} from "../controller/productController.js"
+import {addProduct, gotAll, gotExactProd, getByWord} from "../controller/productController.js"
 import { Router } from "express"
 
 const ruta = Router()
@@ -6,5 +6,5 @@ const ruta = Router()
 ruta.post("/", addProduct);
 ruta.get("/", gotAll);
 ruta.get("/:id", gotExactProd);
-
+ruta.get('/search/:query', getByWord);
 export default ruta
