@@ -21,7 +21,6 @@ export const showCestaUser = async(req, res)=>{
         if(item=="" || item==null) return res.json({msg:"registro no encontrado"})
         res.json(item);
     }catch(error){
-        console.log(error)
         res.status(502).send("Error al mostar el producto")
     }
 }
@@ -33,7 +32,7 @@ export const showCesta2 = async(req, res)=>{
                 user: req.params.user
             }
         });
-        if(item[0].length=="") return res.json({msg:"no hay registros todavia"})
+        if(item.length=="") return res.json({msg:"no hay registros todavia"})
         res.json(item);
     }catch(error){
         console.log(error)

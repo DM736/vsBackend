@@ -30,6 +30,7 @@ export const CreatePago = async(req, res)=>{
                 precio: listaObj[i].precio,
                 cantidad: listaObj[i].cantidad
             }
+            console.log(dataHisto)
             await Historial.create(dataHisto);
             await Cesta.destroy({where:{id: listaObj[i].id}})
         }
@@ -72,4 +73,15 @@ export const validarInfo = async(req, res)=>{
     if(cuentauser.fechaExp != fechaExp) return res.status(200).json({message: "la clave no coincide con la cuenta"})
     if(cuentauser.balance < valorTotal) return res.status(200).json({message: "El saldo es insuficiente para proceder con el pago"})
     return res.status(200).json({message: "Los datos son validos"})
+}
+export const showListComp = async(req, res)=>{
+    try {
+        const listComp = await Transacc.findAll({
+            where:{cesta: req.params.cesta}});
+        if(listComp.length==0) return res.json({msg:"no hay registro de compras aun"})
+        res.json(listComp);
+    } catch (error) {
+        res.status(502).send("Error al mostrar las compras");
+        console.log(error)
+    }
 }

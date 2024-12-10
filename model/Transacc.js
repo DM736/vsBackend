@@ -34,7 +34,5 @@ export const Transacc = datab.define("transaccions",{
     cantidad:{
         type: DataTypes.NUMBER,
         allowNull: false
-    },
-},{
-    timestamps: false,
+    }
 })

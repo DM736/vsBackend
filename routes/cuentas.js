@@ -1,4 +1,4 @@
-import express from express
+import express from "express"
 import { Router } from "express"
 import { addCuenta, gotCuenta, upCuenta } from "../controller/cuentaController.js"
 

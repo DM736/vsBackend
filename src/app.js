@@ -7,6 +7,7 @@ import usuari from '../routes/usuario.js';
 import product from '../routes/product.js';
 import cestas from '../routes/cestas.js';
 import transac from '../routes/transac.js'
+import histor from '../routes/histor.js';
 
 const app = express();
 
@@ -19,7 +20,8 @@ app.use('/api/usuario', usuari);
 
 app.use('/api/productos', product);
 app.use('/api/transacc', transac);
-app.use('/api/cesta', cestas)
+app.use('/api/cesta', cestas);
+app.use('/api/historia',histor);
 
 try{
     datab.authenticate();

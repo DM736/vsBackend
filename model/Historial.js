@@ -19,6 +19,10 @@ export const Historial = datab.define("historials",{
         type: DataTypes.NUMBER,
         allowNull: false
     },
+    precio:{
+        type: DataTypes.NUMBER,
+        allowNull: false
+    },
     cantidad:{
         type: DataTypes.NUMBER,
         allowNull: false
