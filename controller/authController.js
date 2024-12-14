@@ -11,12 +11,13 @@ export const  authenUsuario = async (req, res) =>{
         return res.status(400).json({errores: errores.array()});
     }
     const {email, password} = req.body;
+    //Validacion de la existencia del usuario
     try{
         let usuario = await Usuario.findOne({where:{email: email}});
         if(!usuario){
             return res.status(400).json({msg: "El usuario no existe"});
         } 
-
+        //validacion de la contraseña
         const passVali = await bcryptjs.compare(password, usuario.password);
         if(!passVali){
             return res.status(400).json({msg: "Contraseña incorrecta"});
@@ -24,6 +25,7 @@ export const  authenUsuario = async (req, res) =>{
         const payload ={
             usuario: {id: usuario.id},        
         }
+        //creacion del token
         jwt.sign(
             payload, process.env.SA,
             {
@@ -37,7 +39,6 @@ export const  authenUsuario = async (req, res) =>{
         );
     } catch (error){
         console.log("Hubo un error");
-        console.log(error);
         res.status(400).send("hubo un error");
     }
 };
